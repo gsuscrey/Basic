@@ -9,17 +9,27 @@
 		},
 		"title": "{{appTitle}}",
 		"description": "{{appDescription}}",
-		"dataSources":{
-			"gsusData":{
-			"uri": "https://services.odata.org/V3/Northwind/Northwind.svc",
-			"type": "OData",
-			"settings": {
-				"odataVersion": "2.0"
+		"dataSources": {
+			"gsusData": {
+				"uri": "https://services.odata.org/V3/Northwind/Northwind.svc",
+				"type": "OData",
+				"settings": {
+					"odataVersion": "2.0"
 				}
-			} 
+			},
+			"Northwind.svc": {
+				"uri": "/northwind/V2/Northwind/Northwind.svc/",
+				"type": "OData",
+				"settings": {
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		},
+		"sourceTemplate": {
+			"id": "servicecatalog.connectivityComponentForManifest",
+			"version": "0.0.0"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -36,7 +46,6 @@
 			"phone": true
 		}
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "logaligroup.Basic.view.app",
@@ -63,14 +72,27 @@
 					"bundleName": "logaligroup.Basic.i18n.i18n"
 				}
 			},
-			"invoice":{"type": "sap.ui.model.odata.v2.ODataModel",
-				     	"dataSource": "gsusData"
-			          }
+			"invoice": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"dataSource": "gsusData"
+			},
+			"invoiceWz": {
+				"type": "sap.ui.model.odata.v2.ODataModel",
+				"settings": {
+					"defaultOperationMode": "Server",
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "Request"
+				},
+				"dataSource": "Northwind.svc",
+				"preload": true
+			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		}
 	}
 }

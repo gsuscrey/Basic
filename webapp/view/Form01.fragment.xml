@@ -2,7 +2,7 @@
 					<Panel headerText="{i18n>panelFrTitle}" width="auto" class="sapUiLargeMarginBegin">
 						<content>
 							<Label text="{i18n>labelPerson}" class="sapUiSmallMargin" labelFor="PersName"/>
-							<Input id="persName" width="30%"/>
+							<Input id="persName" width="30%"/> 
 						</content>
 					</Panel>
 </core:FragmentDefinition>
