@@ -11,7 +11,7 @@
 		"description": "{{appDescription}}",
 		"dataSources": {
 			"gsusData": {
-				"uri": "https://services.odata.org/V3/Northwind/Northwind.svc",
+				"uri": "/northwind/V2/Northwind/Northwind.svc",
 				"type": "OData",
 				"settings": {
 					"odataVersion": "2.0"
@@ -93,6 +93,39 @@
 					"uri": "css/style.css"
 				}
 			]
+		},
+		"routing": {
+			"config":{
+			 "routersClass":"sap.m.routing.Router",
+			 "viewType": "XML",
+			 "viewPath": "logaligroup.Basic.view",
+			 "controlId": "app",
+			 "controlAggregation": "pages",
+			 "async": true
+			},
+			
+			"routes": [{
+				"pattern": "",
+				"name": "overview",
+				"target": "overview"
+			},{
+				"pattern": "detail",
+				"name": "detail",
+				"target":"detail"
+				
+			}],
+			"targets": {
+				"overview":{
+					"viewId": "overview",
+					"viewName": "Overview"
+				},
+				"detail":{
+					"viewId": "detail",
+					"viewName":"Detail"
+				}
+			}
+			
+			
 		}
 	}
 }
